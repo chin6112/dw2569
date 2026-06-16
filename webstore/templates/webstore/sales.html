@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ร้านค้า - Sales</title>
+    <link rel="stylesheet" href="{% static 'webstore/css/sales.css' %}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="logo">Velvet Mart</div>
+        <div class="search-bar">
+            <input type="text" placeholder="ค้นหาสินค้า เช่น เสื้อผ้า รองเท้า โทรศัพท์">
+            <button>ค้นหา</button>
+        </div>
+        <div class="header-actions">
+            <a href="#">ข้อความ</a>
+            <a href="#">แจ้งเตือน</a>
+            <a href="#">ตะกร้า</a>
+        </div>
+    </header>
+
+    <main class="page-wrapper">
+        <section class="hero-section">
+            <div>
+                <span class="hero-label">ช็อปสุดคุ้ม</span>
+                <h1>สินค้าขายดีวันนี้</h1>
+                <p>รวมสินค้าราคาพิเศษและโปรโมชั่นสุดปังทุกหมวดหมู่</p>
+            </div>
+            <div class="hero-banner">SALE 24%</div>
+        </section>
+
+        <section class="category-section">
+            <h2>หมวดหมู่ยอดนิยม</h2>
+            <div class="category-grid">
+                {% for category in categories %}
+                    <div class="category-card">
+                        <div class="category-icon">{{ forloop.counter }}</div>
+                        <div>
+                            <h3>{{ category.name }}</h3>
+                            <p>{{ category.subtitle }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <div class="section-heading">
+                <h2>สินค้าแนะนำ</h2>
+                <p>รวมสินค้าขายดี รับประกันความถูกใจ</p>
+            </div>
+            <div class="featured-grid">
+                {% for product in featured_products %}
+                    <article class="product-card featured">
+                        <div class="product-image">
+                            <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                        </div>
+                        <div class="product-body">
+                            <h3>{{ product.name }}</h3>
+                            <p>รหัสสินค้า: {{ product.sku }}</p>
+                            <span>คงเหลือ {{ product.stock }}</span>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="products-section">
+            <div class="section-heading">
+                <h2>สินค้าแนะนำเพิ่มเติม</h2>
+                <p>เลือกซื้อสินค้าที่คุณต้องการได้ทันที</p>
+            </div>
+            <div class="product-grid">
+                {% for product in products %}
+                    <article class="product-card">
+                        <div class="product-image">
+                            <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                        </div>
+                        <div class="product-body">
+                            <h3>{{ product.name }}</h3>
+                            <p>SKU: {{ product.sku }}</p>
+                            <span>สต็อก {{ product.stock }}</span>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        <p>Velvet Mart &copy; 2026 | หน้าเว็บขายของสไตล์ Shopee</p>
+    </footer>
+</body>
+</html>

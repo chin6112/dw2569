@@ -1,0 +1,247 @@
+:root {
+    --bg: #f8f8f8;
+    --surface: #ffffff;
+    --accent: #ff5722;
+    --accent-soft: #ffe8e0;
+    --text: #222;
+    --muted: #666;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.topbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: #ffffff;
+    border-bottom: 1px solid #ececec;
+    gap: 12px;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.search-bar {
+    flex: 1 1 320px;
+    display: flex;
+    gap: 8px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.search-bar button {
+    border: none;
+    padding: 0 20px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.header-actions a {
+    margin-left: 16px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.page-wrapper {
+    max-width: 1180px;
+    margin: 24px auto;
+    padding: 0 24px 40px;
+}
+
+.hero-section {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: center;
+    background: linear-gradient(135deg, #ffe6dc 0%, #fff 100%);
+    border-radius: 24px;
+    padding: 36px;
+}
+
+.hero-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 8px 14px;
+    background: var(--accent-soft);
+    border-radius: 999px;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.hero-section h1 {
+    margin: 0 0 10px;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.hero-section p {
+    margin: 0;
+    color: var(--muted);
+    max-width: 520px;
+}
+
+.hero-banner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 180px;
+    border-radius: 28px;
+    background: var(--accent);
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.category-section,
+.featured-section,
+.products-section {
+    margin-top: 32px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 18px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.section-heading p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.category-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px;
+    background: var(--surface);
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+}
+
+.category-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.featured-grid,
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+}
+
+.product-card {
+    background: var(--surface);
+    border-radius: 24px;
+    border: 1px solid #eee;
+    overflow: hidden;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.08);
+}
+
+.product-card.featured {
+    grid-column: span 2;
+}
+
+.product-image {
+    min-height: 180px;
+    background: linear-gradient(135deg, #f4f4f4, #fafafa);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.product-body {
+    padding: 18px;
+}
+
+.product-body h3 {
+    margin: 0 0 10px;
+    font-size: 1.05rem;
+}
+
+.product-body p {
+    margin: 0 0 8px;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+.product-body span {
+    display: inline-block;
+    margin-top: 8px;
+    color: #444;
+    font-weight: 600;
+}
+
+.page-footer {
+    text-align: center;
+    padding: 24px 0;
+    color: var(--muted);
+}
+
+@media (max-width: 880px) {
+    .hero-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .search-bar {
+        width: 100%;
+    }
+    .section-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
