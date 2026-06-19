@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การตลาด</title>
+    <link rel="stylesheet" href="{% static 'webstore/css/sales.css' %}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="logo">Marketing System</div>
+        <div class="header-actions">
+            <a href="/sales/">Sales</a>
+            <a href="/inventory/">Inventory</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/transportation/">Transportation</a>
+        </div>
+    </header>
+
+    <main class="page-wrapper">
+        <section class="hero-section">
+            <div>
+                <span class="hero-label">ระบบการตลาด</span>
+                <h1>จัดการลูกค้าและแคมเปญได้อย่างเป็นระบบ</h1>
+                <p>ดูรายชื่อลูกค้า แคมเปญ และงบประมาณทั้งหมดในหน้าเดียว</p>
+            </div>
+            <div class="hero-banner">Marketing</div>
+        </section>
+
+        <section class="category-section">
+            <h2>ลูกค้า</h2>
+            <div class="category-grid">
+                {% for customer in customers %}
+                    <div class="category-card">
+                        <div class="category-icon">{{ forloop.counter }}</div>
+                        <div>
+                            <h3>{{ customer.name }}</h3>
+                            <p>รหัสลูกค้า: {{ customer.customer_code }}</p>
+                            <p>กลุ่ม: {{ customer.segment }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <div class="section-heading">
+                <h2>แคมเปญ</h2>
+                <p>แคมเปญการตลาดที่กำลังวางแผนและใช้งาน</p>
+            </div>
+            <div class="featured-grid">
+                {% for campaign in campaigns %}
+                    <article class="product-card featured">
+                        <div class="product-body">
+                            <h3>{{ campaign.name }}</h3>
+                            <p>ระยะเวลา: {{ campaign.start_date }} - {{ campaign.end_date }}</p>
+                            <span>งบประมาณ {{ campaign.budget }}</span>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        <p>Marketing System | Velvet Mart</p>
+    </footer>
+</body>
+</html>

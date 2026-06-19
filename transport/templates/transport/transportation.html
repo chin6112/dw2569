@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบขนส่ง</title>
+    <link rel="stylesheet" href="{% static 'webstore/css/sales.css' %}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="logo">Transportation System</div>
+        <div class="header-actions">
+            <a href="/sales/">Sales</a>
+            <a href="/inventory/">Inventory</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/transportation/">Transportation</a>
+        </div>
+    </header>
+
+    <main class="page-wrapper">
+        <section class="hero-section">
+            <div>
+                <span class="hero-label">ระบบขนส่ง</span>
+                <h1>ติดตามสถานะการจัดส่งและใบสั่งซื้อ</h1>
+                <p>ระบบขนส่งที่แสดงสถานะพัสดุและเลขติดตามได้ทันที</p>
+            </div>
+            <div class="hero-banner">Transport</div>
+        </section>
+
+        <section class="category-section">
+            <h2>รายการพัสดุ</h2>
+            <div class="category-grid">
+                {% for shipment in shipments %}
+                    <div class="category-card">
+                        <div class="category-icon">{{ forloop.counter }}</div>
+                        <div>
+                            <h3>{{ shipment.tracking_number }}</h3>
+                            <p>อ้างอิงคำสั่งซื้อ: {{ shipment.order_reference }}</p>
+                            <p>ผู้ขนส่ง: {{ shipment.carrier }}</p>
+                            <p>สถานะ: {{ shipment.status }}</p>
+                            <p>จัดส่งวันที่: {{ shipment.shipped_at }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        <p>Transportation System | Velvet Mart</p>
+    </footer>
+</body>
+</html>

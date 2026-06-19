@@ -9,7 +9,15 @@
 </head>
 <body>
     <header class="topbar">
-        <div class="logo">Velvet Mart</div>
+        <div>
+            <div class="logo">Velvet Mart</div>
+            <nav class="main-nav">
+                <a href="/sales/">Sales</a>
+                <a href="/inventory/">Inventory</a>
+                <a href="/marketing/">Marketing</a>
+                <a href="/transportation/">Transportation</a>
+            </nav>
+        </div>
         <div class="search-bar">
             <input type="text" placeholder="ค้นหาสินค้า เช่น เสื้อผ้า รองเท้า โทรศัพท์">
             <button>ค้นหา</button>
@@ -24,11 +32,11 @@
     <main class="page-wrapper">
         <section class="hero-section">
             <div>
-                <span class="hero-label">ช็อปสุดคุ้ม</span>
-                <h1>สินค้าขายดีวันนี้</h1>
-                <p>รวมสินค้าราคาพิเศษและโปรโมชั่นสุดปังทุกหมวดหมู่</p>
+                <span class="hero-label">หน้าร้าน Velvet Mart</span>
+                <h1>ช็อปสินค้าคุณภาพจากทุกหมวด</h1>
+                <p>เข้าสู่ระบบขายที่รวมทั้งสินค้าโปรและรายการแนะนำไว้ในหน้าเดียว</p>
             </div>
-            <div class="hero-banner">SALE 24%</div>
+            <div class="hero-banner">สินค้าขายดี</div>
         </section>
 
         <section class="category-section">
@@ -49,18 +57,18 @@
         <section class="featured-section">
             <div class="section-heading">
                 <h2>สินค้าแนะนำ</h2>
-                <p>รวมสินค้าขายดี รับประกันความถูกใจ</p>
+                <p>เลือกจากรายการเด่นที่ลูกค้าชื่นชอบ</p>
             </div>
-            <div class="featured-grid">
+            <div class="product-grid">
                 {% for product in featured_products %}
-                    <article class="product-card featured">
+                    <article class="product-card">
                         <div class="product-image">
                             <img src="{{ product.image_url }}" alt="{{ product.name }}">
                         </div>
                         <div class="product-body">
                             <h3>{{ product.name }}</h3>
-                            <p>รหัสสินค้า: {{ product.sku }}</p>
-                            <span>คงเหลือ {{ product.stock }}</span>
+                            <p>SKU: {{ product.sku }}</p>
+                            <span>สต็อก {{ product.stock }}</span>
                         </div>
                     </article>
                 {% endfor %}
@@ -69,8 +77,8 @@
 
         <section class="products-section">
             <div class="section-heading">
-                <h2>สินค้าแนะนำเพิ่มเติม</h2>
-                <p>เลือกซื้อสินค้าที่คุณต้องการได้ทันที</p>
+                <h2>สินค้าทั้งหมด</h2>
+                <p>สินค้าและโปรโมชั่นล่าสุดที่มีจำหน่ายตอนนี้</p>
             </div>
             <div class="product-grid">
                 {% for product in products %}

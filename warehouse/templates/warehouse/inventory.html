@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คลังสินค้า</title>
+    <link rel="stylesheet" href="{% static 'webstore/css/sales.css' %}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="logo">Warehouse System</div>
+        <div class="header-actions">
+            <a href="/sales/">Sales</a>
+            <a href="/inventory/">Inventory</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/transportation/">Transportation</a>
+        </div>
+    </header>
+
+    <main class="page-wrapper">
+        <section class="hero-section">
+            <div>
+                <span class="hero-label">ระบบคลังสินค้า</span>
+                <h1>ตรวจสอบสต็อกสินค้าและการรับเข้า-ส่งออก</h1>
+                <p>จัดการรายการสินค้าและปริมาณสินค้าในคลังได้ง่ายตรงนี้</p>
+            </div>
+            <div class="hero-banner">Warehouse</div>
+        </section>
+
+        <section class="category-section">
+            <h2>รายการสินค้า</h2>
+            <div class="category-grid">
+                {% for product in products %}
+                    <div class="category-card">
+                        <div class="category-icon">{{ forloop.counter }}</div>
+                        <div>
+                            <h3>{{ product.name }}</h3>
+                            <p>SKU: {{ product.sku }}</p>
+                            <p>สต็อก: {{ product.stock }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <div class="section-heading">
+                <h2>ประวัติการเคลื่อนไหว</h2>
+                <p>รายการเข้าคลังและปรับสต็อกล่าสุด</p>
+            </div>
+            <div class="featured-grid">
+                {% for entry in inventory_entries %}
+                    <article class="product-card featured">
+                        <div class="product-body">
+                            <h3>{{ entry.product.name }}</h3>
+                            <p>SKU: {{ entry.product.sku }}</p>
+                            <span>จำนวน {{ entry.quantity }}</span>
+                            <p>อัปเดต: {{ entry.updated_at }}</p>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        <p>Warehouse System | Velvet Mart</p>
+    </footer>
+</body>
+</html>
