@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
+from django.conf import settings
+from django.conf.urls.static import static
 from webstore.views import sales_home
 from warehouse.views import inventory_home
 from marketing.views import marketing_home
@@ -12,9 +14,13 @@ urlpatterns = [
     path('api/webstore/', include('webstore.urls')),
     path('sales/', sales_home),
     path('inventory/', inventory_home),
+    path('warehouse/', RedirectView.as_view(url='/inventory/', permanent=False)),
     path('marketing/', marketing_home),
     path('transportation/', transportation_home),
     path('api/warehouse/', include('warehouse.urls')),
     path('api/marketing/', include('marketing.urls')),
     path('api/transport/', include('transport.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.BASE_DIR / 'webstore' / 'static')

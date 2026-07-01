@@ -60,6 +60,15 @@ DATABASES = {
     }
 }
 
+CLICKHOUSE = {
+    'host': os.environ.get('CLICKHOUSE_HOST', 'localhost'),
+    'port': int(os.environ.get('CLICKHOUSE_PORT', 8123)),
+    'username': os.environ.get('CLICKHOUSE_USER', 'default'),
+    'password': os.environ.get('CLICKHOUSE_PASSWORD', ''),
+    'database': os.environ.get('CLICKHOUSE_DB', 'default'),
+    'secure': os.environ.get('CLICKHOUSE_SECURE', 'false').lower() in ('1', 'true', 'yes'),
+}
+
 AUTH_PASSWORD_VALIDATORS = []
 
 LANGUAGE_CODE = 'th'
